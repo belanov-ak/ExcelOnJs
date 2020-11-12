@@ -1,23 +1,25 @@
+import {$} from '@core/dom'
+
 export class Excel {
-    constructor(selector, options) {
-        this.$el = document.querySelector(selector)
-        this.components = options.components || []
-    }
+  constructor(selector, options) {
+    this.$el = document.querySelector(selector)
+    this.components = options.components || []
+  }
 
-    //Creates root element and passes value, that stores in toHTML method of each class, to it
-    getRoot() { 
-        const $root = document.createElement('div')
+  getRoot() {
+    const $root = $.create('div', 'excel')
 
-        this.components.forEach(Component => {
-            const component = new Component()
-            $root.insertAdjacentHTML('beforeend', component.toHTML())
-        });
+    this.components.forEach(Component => {
+      const $el = $.create('div', Component.className)
+      const component = new Component($el)
+      $el.innerHTML = component.toHTML()
+      $root.append($el)
+    })
 
-        return $root
-    }
+    return $root
+  }
 
-    //Displays the template on the page 
-    render() {
-        this.$el.append(this.getRoot())
-    }
+  render() {
+    this.$el.append(this.getRoot())
+  }
 }
