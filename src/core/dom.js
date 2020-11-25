@@ -41,6 +41,14 @@ class Dom {
 
     return this
   }
+
+  closest(selector) {
+    return $(this.$el.closest(selector))
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect()
+  }
 }
 
 //method similar to jquery $. Allowing to simplify the code
