@@ -5,9 +5,13 @@ const CODES = {
 
 //Function wrapping incoming arrays into a HTML-template of the row
 function createRow(index, content) {
+    const resize = index ? '<div class="row-resize"></div>' : ''
     return `
         <div class="row">
-            <div class="row-info">${index ? index : ''}</div>
+            <div class="row-info">
+                ${index ? index : ''}
+                ${resize}
+            </div>
             <div class="row-data">${content}</div>
         </div>
     `
@@ -15,7 +19,10 @@ function createRow(index, content) {
 
 //Wrapping incoming array into a HTML-template of the column
 function toColumn(col) {
-    return `<div class="column">${col}</div>`
+    return `<div class="column">
+    ${col}
+    <div class="col-resize"></div>
+    </div>`
 }
 
 
