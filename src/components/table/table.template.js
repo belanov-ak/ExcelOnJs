@@ -7,7 +7,7 @@ const CODES = {
 function createRow(index, content) {
     const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
     return `
-        <div class="row">
+        <div class="row"  data-type="resizeble">
             <div class="row-info">
                 ${index ? index : ''}
                 ${resize}
@@ -18,8 +18,8 @@ function createRow(index, content) {
 }
 
 //Wrapping incoming array into a HTML-template of the column
-function toColumn(col) {
-    return `<div class="column" data-type="resizeble">
+function toColumn(col, index) {
+    return `<div class="column" data-type="resizeble" data-col="${index}">
     ${col}
     <div class="col-resize" data-resize="col"></div>
     </div>`
@@ -32,8 +32,8 @@ function toChar(_, index) {
 } 
 
 //Passes HTML-template of the cell for each parameter in massive 
-function toCell() {
-    return `<div class="cell" contenteditable></div>`
+function toCell(_, col) {
+    return `<div class="cell" data-col="${col}" contenteditable></div>`
 }
 
 //Main function forming a table
