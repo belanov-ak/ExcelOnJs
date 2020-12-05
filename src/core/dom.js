@@ -70,6 +70,11 @@ class Dom {
     this.$el.classList.remove(className)
   }
 
+  focus() {
+    this.$el.focus()
+    return this
+  }
+
   id(parse) {
     if (parse === true) {
       const parsed = this.id().split(':')
