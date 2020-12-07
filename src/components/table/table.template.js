@@ -32,8 +32,10 @@ function toChar(_, index) {
 } 
 
 //Passes HTML-template of the cell for each parameter in massive 
-function toCell(_, col) {
-    return `<div class="cell" data-col="${col}" contenteditable></div>`
+function toCell(row) {
+    return function(_, col) {
+        return `<div class="cell" data-col="${col}" data-id="${row}:${col}" data-type="cell" contenteditable></div>`
+    }
 }
 
 //Main function forming a table
@@ -49,12 +51,12 @@ export function createTable(rowsCount) {
         .join('')
     rows.push(createRow(null, cols))
 
-    for (let i = 0; i < rowsCount; i++) {
+    for (let row = 0; row < rowsCount; row++) {
         const cells = new Array(colsCount)
             .fill('')
-            .map(toCell)
+            .map(toCell(row))
             .join('')
-        rows.push(createRow(i + 1, cells))
+        rows.push(createRow(row + 1, cells))
     }
 
     return rows.join('')
