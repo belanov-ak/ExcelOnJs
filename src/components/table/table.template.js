@@ -20,7 +20,7 @@ function getHeight(state, index) {
 
 function toCell(state, row) {
   return function(_, col) {
-    const id = `${row}:${col}`;
+const id = `${row}:${col}`;
     const width = getWidth(state.colState, col);
     const data = state.dataState[id];
     const styles = toInlineStyles({
@@ -52,7 +52,7 @@ function toColumn({col, index, width}) {
       ${col}
       <div class="col-resize" data-resize="col"></div>
     </div>
-  `;
+ `;
 }
 
 function createRow(index, content, state = {}) {
@@ -74,7 +74,7 @@ function createRow(index, content, state = {}) {
       </div>
       <div class="row-data">${content}</div>
     </div>
-  `;
+`;
 }
 
 function toChar(_, index) {
@@ -84,7 +84,7 @@ function toChar(_, index) {
 function withWidthFrom(state) {
   return function(col, index) {
     return {
-      col, index, width: getWidth(state.colState, index),
+col, index, width: getWidth(state.colState, index),
     };
   };
 }
@@ -98,7 +98,7 @@ export function createTable(rowsCount = 15, state = {}) {
       .map(toChar)
       .map(withWidthFrom(state))
       .map(toColumn)
-      .join('');
+.join('');
 
   rows.push(createRow(null, cols));
 
@@ -106,7 +106,7 @@ export function createTable(rowsCount = 15, state = {}) {
     const cells = new Array(colsCount)
         .fill('')
         .map(toCell(state, row))
-        .join('');
+ .join('');
 
     rows.push(createRow(row + 1, cells, state.rowState));
   }

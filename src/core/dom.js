@@ -26,7 +26,7 @@ class Dom {
     if (this.$el.tagName.toLowerCase() === 'input') {
       return this.$el.value.trim();
     }
-    return this.$el.textContent.trim();
+  return this.$el.textContent.trim();
   }
 
   on(eventType, callback) {
@@ -39,6 +39,10 @@ class Dom {
 
   find(selector) {
     return $(this.$el.querySelector(selector));
+  }
+
+  find(selector) {
+    return $(this.$el.querySelector(selector))
   }
 
   append(node) {
@@ -88,7 +92,7 @@ class Dom {
 
   id(parse) {
     if (parse) {
-      const parsed = this.id().split(':');
+     const parsed = this.id().split(':');
       return {
         row: +parsed[0],
         col: +parsed[1],

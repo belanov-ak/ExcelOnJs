@@ -2,7 +2,7 @@ function toButton(button) {
   const meta = `
     data-type="button"
     data-value='${JSON.stringify(button.value)}'
-  `;
+ `;
   return `
     <div 
       class="button ${button.active ? 'active' : ''}"
@@ -13,7 +13,7 @@ function toButton(button) {
         ${meta}
       >${button.icon}</i>
     </div>
-  `;
+`;
 }
 
 export function createToolbar(s) {

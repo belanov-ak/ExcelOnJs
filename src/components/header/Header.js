@@ -39,7 +39,7 @@ export class Header extends ExcelComponent {
     `
   }
 
-  onClick(event) {
+ onClick(event) {
     const $target = $(event.target) 
 
     if ($target.data.button === 'remove') {
@@ -53,7 +53,6 @@ export class Header extends ExcelComponent {
       ActiveRoute.navigate('')
     }
   }
-
   onInput(event) {
     const $target = $(event.target)
     this.$dispatch(changeTitle($target.text()))
